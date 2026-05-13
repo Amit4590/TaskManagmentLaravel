@@ -151,3 +151,40 @@ CREATE DATABASE task_manager;
 ```bash
 php artisan migrate
 ```
+
+# Run Project
+
+## 1) Terminal 1
+```bash
+php artisan serve
+```
+
+## 2) Terminal 2
+```bash
+npm run dev
+```
+
+## 3) Project URL
+```bash
+http://127.0.0.1:8000
+```
+
+# Quick Setup Commands
+
+```bash
+composer install
+
+npm install
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan storage:link
+
+npm run build
+
+php artisan serve
+```
