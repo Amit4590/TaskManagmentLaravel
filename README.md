@@ -1,288 +1,118 @@
 <p align="center">
     <a href="https://laravel.com" target="_blank">
-        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg"
+             width="400"
+             alt="Laravel Logo">
     </a>
 </p>
 
 <p align="center">
     <a href="https://github.com/laravel/framework/actions">
-        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg"
+             alt="Build Status">
     </a>
+
     <a href="https://packagist.org/packages/laravel/framework">
-        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework"
+             alt="Total Downloads">
     </a>
+
     <a href="https://packagist.org/packages/laravel/framework">
-        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+        <img src="https://img.shields.io/packagist/v/laravel/framework"
+             alt="Latest Stable Version">
     </a>
+
     <a href="https://packagist.org/packages/laravel/framework">
-        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+        <img src="https://img.shields.io/packagist/l/laravel/framework"
+             alt="License">
     </a>
 </p>
 
-# Ride Booking Laravel Assessment
+# Task Management System - Laravel 12
 
-This project is a Laravel-based backend application that provides APIs for a simple ride-booking flow used by a mobile app.
+This project is a Laravel 12 based Task Management System developed using Blade and Bootstrap 5.
 
-A minimal admin panel is also included using Laravel Blade templates to view rides and ride details.
+The application allows users to manage their personal tasks with authentication, task CRUD operations, file uploads, filtering, searching, and pagination.
+
+A professional architecture approach is used including:
+
+- Service Layer
+- Policies
+- Form Requests
+- Enum
+- AJAX File Upload
+- Clean MVC Structure
 
 ---
 
-## Features
+# Features
 
-### Swagger Documentation
-- Swagger UI implemented using **L5 Swagger**
-- All Controllers include `@OA\...` annotations
+## Authentication
+- User Registration
+- User Login
+- Secure Authentication using Laravel Breeze
 
 ---
 
-## Requirements
+## Task Management
+- Create Task
+- Edit Task
+- Delete Task
+- Task Listing
+- Task Status Management
+- Due Date Support
 
-- PHP 8.1+
-- Composer
+---
+
+## User-wise Tasks
+- Each user can only access their own tasks
+- Authorization handled using Laravel Policies
+
+---
+
+## File Uploads
+- Multiple File Upload
+- Image Preview
+- PDF Preview
+- AJAX Upload
+- Uploaded File Listing
+
+---
+
+## Advanced Features
+- Search Tasks
+- Filter by Status
+- Pagination
+- Validation Handling
+- Responsive Bootstrap UI
+
+---
+
+# Tech Stack
+
+- PHP 8.2+
+- Laravel 12
 - MySQL
-- Laravel 10/11
+- Bootstrap 5
+- Blade Template Engine
+- JavaScript Fetch API
 
 ---
 
-## Installation
+# Requirements
 
-### 1) Clone the repository
-```bash
-git clone <your-repository-url>
-cd ride-booking
-```
-
-### 2) Install dependencies
-```bash
-composer install
-```
-
-### 3) Create environment file
-```bash
-cp .env.example .env
-```
-
-### 4) Generate application key
-```bash
-php artisan key:generate
-```
-
-### 5) Setup database
-- Update your .env: (For loalhost)
-```bash
-DB_DATABASE=ride_booking
-DB_USERNAME=root
-DB_PASSWORD=
-```
-- Create DB manually: (in SQL)
-```bash
-CREATE DATABASE ride_booking;
-```
-
-### 6) Run migrations
-```bash
-php artisan migrate
-```
-
-### 7) Seed dummy data
-```bash
-php artisan db:seed
-```
-- Seeders create:
-	- 2 Passengers
-	- 2 Drivers
-
-### 8) Generate Swagger docs
-```bash
-php artisan l5-swagger:generate
-```
-
-### 9) Run the server
-```bash
-php artisan serve
-```
+- PHP 8.2+
+- Composer
+- Node.js & NPM
+- MySQL
 
 ---
 
-### Swagger Documentation
-After running the project, open this URL to test the api:
-```bash
-http://127.0.0.1:8000/api/documentation
-```
+# Installation
 
----
-
-### Admin Panel
-Admin rides list:
-```bash
-http://127.0.0.1:8000/admin/rides
-```
-
----
-
-## API Endpoints
-
-### Passenger APIs
-
-#### Create Ride Request
-#### POST
-```bash
-/api/passenger/rides
-```
-Body:
-
-```bash 
-{
-  "passenger_id": 1,
-  "pickup_lat": 26.8467,
-  "pickup_lng": 80.9462,
-  "destination_lat": 26.9124,
-  "destination_lng": 75.7873
-}
-```
-
----
-
-#### Approve Driver
-#### POST
-```bash
-/api/passenger/rides/{ride}/approve-driver
-```
-Body:
-
-```bash 
-{
-  "passenger_id": 1,
-  "driver_id": 1
-}
-```
-
----
-
-#### Passenger Complete Ride
-#### POST
-```bash
-/api/passenger/rides/{ride}/complete
-```
-Body:
-
-```bash 
-{
-  "passenger_id": 1
-}
-```
-
----
-
-### Driver APIs
-
-
-#### Update Driver Location
-#### POST
-```bash
-/api/driver/location
-```
-Body:
-
-```bash 
-{
-  "driver_id": 1,
-  "lat": 26.8467,
-  "lng": 80.9462
-}
-```
-
----
-
-#### Get Nearby Pending Rides
-#### GET
-```bash
-/api/driver/rides/nearby?driver_id=1&radius_km=10
-```
-
----
-
-#### Request / Claim Ride
-#### POST
-```bash
-/api/driver/rides/{ride}/request
-```
-Body:
-
-```bash 
-{
-  "driver_id": 1
-}
-```
-
----
-
-#### Driver Complete Ride
-#### POST
-```bash
-/api/driver/rides/{ride}/complete
-```
-Body:
-
-```bash 
-{
-  "driver_id": 1
-}
-```
-
---- 
-
-### API Response Format
-
-#### Success
+## 1) Clone Repository
 
 ```bash
-{
-  "success": true,
-  "message": "Success",
-  "data": {}
-}
-```
+git clone <repository-url>
 
-#### Error (Validation)
-```bash
-{
-  "success": false,
-  "message": "Validation error",
-  "errors": {
-    "field": [
-      "The field field is required."
-    ]
-  }
-}
-```
-
----
-
-### Database Tables
-- passengers
-- drivers
-- driver_locations
-- rides
-- ride_driver_requests
-
---- 
-
-### Run All Commands (Quick Setup)
-```bash
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan db:seed
-php artisan l5-swagger:generate
-php artisan serve
-```
-
---- 
-
-### Notes
-- Authentication is not implemented as per requirement
-- Passenger actions are restricted by passenger_id
-- Driver actions are restricted by driver_id
-- Ride completion requires both passenger + driver completion
+cd task-manager
