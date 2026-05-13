@@ -1,59 +1,288 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <a href="https://laravel.com" target="_blank">
+        <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
+    </a>
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="https://github.com/laravel/framework/actions">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+    </a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Ride Booking Laravel Assessment
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is a Laravel-based backend application that provides APIs for a simple ride-booking flow used by a mobile app.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+A minimal admin panel is also included using Laravel Blade templates to view rides and ride details.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Swagger Documentation
+- Swagger UI implemented using **L5 Swagger**
+- All Controllers include `@OA\...` annotations
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Requirements
 
-### Premium Partners
+- PHP 8.1+
+- Composer
+- MySQL
+- Laravel 10/11
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1) Clone the repository
+```bash
+git clone <your-repository-url>
+cd ride-booking
+```
 
-## Code of Conduct
+### 2) Install dependencies
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3) Create environment file
+```bash
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+### 4) Generate application key
+```bash
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5) Setup database
+- Update your .env: (For loalhost)
+```bash
+DB_DATABASE=ride_booking
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- Create DB manually: (in SQL)
+```bash
+CREATE DATABASE ride_booking;
+```
 
-## License
+### 6) Run migrations
+```bash
+php artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 7) Seed dummy data
+```bash
+php artisan db:seed
+```
+- Seeders create:
+	- 2 Passengers
+	- 2 Drivers
+
+### 8) Generate Swagger docs
+```bash
+php artisan l5-swagger:generate
+```
+
+### 9) Run the server
+```bash
+php artisan serve
+```
+
+---
+
+### Swagger Documentation
+After running the project, open this URL to test the api:
+```bash
+http://127.0.0.1:8000/api/documentation
+```
+
+---
+
+### Admin Panel
+Admin rides list:
+```bash
+http://127.0.0.1:8000/admin/rides
+```
+
+---
+
+## API Endpoints
+
+### Passenger APIs
+
+#### Create Ride Request
+#### POST
+```bash
+/api/passenger/rides
+```
+Body:
+
+```bash 
+{
+  "passenger_id": 1,
+  "pickup_lat": 26.8467,
+  "pickup_lng": 80.9462,
+  "destination_lat": 26.9124,
+  "destination_lng": 75.7873
+}
+```
+
+---
+
+#### Approve Driver
+#### POST
+```bash
+/api/passenger/rides/{ride}/approve-driver
+```
+Body:
+
+```bash 
+{
+  "passenger_id": 1,
+  "driver_id": 1
+}
+```
+
+---
+
+#### Passenger Complete Ride
+#### POST
+```bash
+/api/passenger/rides/{ride}/complete
+```
+Body:
+
+```bash 
+{
+  "passenger_id": 1
+}
+```
+
+---
+
+### Driver APIs
+
+
+#### Update Driver Location
+#### POST
+```bash
+/api/driver/location
+```
+Body:
+
+```bash 
+{
+  "driver_id": 1,
+  "lat": 26.8467,
+  "lng": 80.9462
+}
+```
+
+---
+
+#### Get Nearby Pending Rides
+#### GET
+```bash
+/api/driver/rides/nearby?driver_id=1&radius_km=10
+```
+
+---
+
+#### Request / Claim Ride
+#### POST
+```bash
+/api/driver/rides/{ride}/request
+```
+Body:
+
+```bash 
+{
+  "driver_id": 1
+}
+```
+
+---
+
+#### Driver Complete Ride
+#### POST
+```bash
+/api/driver/rides/{ride}/complete
+```
+Body:
+
+```bash 
+{
+  "driver_id": 1
+}
+```
+
+--- 
+
+### API Response Format
+
+#### Success
+
+```bash
+{
+  "success": true,
+  "message": "Success",
+  "data": {}
+}
+```
+
+#### Error (Validation)
+```bash
+{
+  "success": false,
+  "message": "Validation error",
+  "errors": {
+    "field": [
+      "The field field is required."
+    ]
+  }
+}
+```
+
+---
+
+### Database Tables
+- passengers
+- drivers
+- driver_locations
+- rides
+- ride_driver_requests
+
+--- 
+
+### Run All Commands (Quick Setup)
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan l5-swagger:generate
+php artisan serve
+```
+
+--- 
+
+### Notes
+- Authentication is not implemented as per requirement
+- Passenger actions are restricted by passenger_id
+- Driver actions are restricted by driver_id
+- Ride completion requires both passenger + driver completion
