@@ -113,3 +113,41 @@ A professional architecture approach is used including:
 git clone <repository-url>
 
 cd task-manager
+
+```
+
+## 2) Install dependencies
+```bash
+composer install
+```
+
+## 3) Install Node Dependencies
+```bash
+npm install
+```
+
+## 4) Create environment file
+```bash
+cp .env.example .env
+```
+
+## 5) Generate application key
+```bash
+php artisan key:generate
+```
+## 5) Setup database
+- Update your .env: (For loalhost)
+```bash
+DB_DATABASE=task_manager
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- Create DB manually: (in SQL)
+```bash
+CREATE DATABASE task_manager;
+```
+
+## 6) Run migrations
+```bash
+php artisan migrate
+```
